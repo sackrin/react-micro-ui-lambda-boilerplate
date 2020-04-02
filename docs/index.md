@@ -1,11 +1,15 @@
-## Setting up local codebase
+## Setting up local workspace
 
 - Clone this repo and run ```npm i```
 - Run ```npx nps local``` to run the micro frontend locally
 
-## Creating the AWS Lambda function
+## AWS Console
+In order to deploy a micro frontend project via AWS Lambda Function you will need to have an AWS account. While the actual application will be run within a Lambda Function, AWS services such as API Gateway, CloudFront and S3 will also be used to store and serve your micro frontend assets and routes.
 
 - Sign into AWS console and select your desired region
+
+## Creating the AWS Lambda function
+
 - Navigate to the AWS lambda page
 - Choose "Create function"
 - Choose "Use a blueprint" and enter "microservice" into the search bar
@@ -18,14 +22,16 @@
 - Choose "Open" for security
 - Select "Create Function"
 
-## Setting up AWS API HTTP Gateway
+## Setting up API HTTP Gateway
+
+The API Gateway will be used to serve bootstrap.js, API endpoints and server-side rendered components. The gateway will be used to route traffic from the outside world to you Lambda Function.
 
 - Navigate to the AWS "API Gateway" page
 - Choose the API Gateway you created
 - Choose "Routes" from the side menu
 - Choose the generated route "Any" and Delete
 
-## Configuring AWS API HTTP Gateway
+## Configuring API HTTP Gateway
 
 - Choose "Create"
 - Choose "GET" and enter "/bootstrap.js" and Create
@@ -92,3 +98,7 @@
 - Choose "Add environment variable"
 - Enter "API_URL" Key and API Invoke URL as URL ie. "https://xxxxx.execute-api.ap-xxxxxxx.amazonaws.com"
 - Choose "Save"
+
+## Deployment
+
+- [Deploy Micro Frontend Manually](./manual-deploy.md)
